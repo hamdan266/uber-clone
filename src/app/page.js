@@ -7,6 +7,7 @@ import DriveSection from "./sections/DriveSection";
 import EatsSection from "./sections/EatsSection";
 import BusinessSection from "./sections/BusinessSection";
 import CtaBanner from "./sections/CtaBanner";
+import ExploreSection from "./sections/ExploreSection";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <DriveSection />
       <EatsSection />
       <BusinessSection />
+      <ExploreSection />
       <CtaBanner />
       <Footer />
       <ScrollToTop />
