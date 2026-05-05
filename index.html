@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Uber - Go anywhere with Uber. Request a ride, hop in, and go.">
+  <title>Uber | Go Anywhere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" id="logo">Uber</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#ride">Ride</a></li>
+        <li><a href="#drive">Drive</a></li>
+        <li><a href="#eats">Uber Eats</a></li>
+        <li><a href="#business">Business</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-chip btn-sm" id="login-btn">Log in</a>
+        <a href="signup.html" class="btn btn-primary btn-sm" id="signup-btn">Sign up</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <ul class="mobile-nav-links">
+      <li><a href="#ride">Ride</a></li>
+      <li><a href="#drive">Drive</a></li>
+      <li><a href="#eats">Uber Eats</a></li>
+      <li><a href="#business">Business</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="mobile-nav-actions">
+      <a href="signup.html" class="btn btn-primary btn-lg" style="width:100%">Sign up</a>
+      <a href="login.html" class="btn btn-chip btn-lg" style="width:100%">Log in</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="ride">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content animate-on-scroll">
+          <div class="category-pills" style="margin-bottom:24px">
+            <button class="btn btn-chip active" id="pill-ride">Ride</button>
+            <button class="btn btn-chip" id="pill-drive">Drive</button>
+            <button class="btn btn-chip" id="pill-eats">Eats</button>
+            <button class="btn btn-chip" id="pill-business">Business</button>
+          </div>
+          <h1>Go anywhere with Uber</h1>
+          <p>Request a ride, hop in, and go. Available in thousands of cities worldwide.</p>
+          <div class="hero-inputs">
+            <input type="text" class="hero-input" id="pickup-input" placeholder="Enter pickup location" aria-label="Pickup location">
+            <input type="text" class="hero-input" id="dest-input" placeholder="Enter destination" aria-label="Destination">
+          </div>
+          <div class="hero-cta">
+            <a href="#" class="btn btn-primary btn-lg" id="see-prices-btn">See prices</a>
+            <a href="#" class="btn btn-chip btn-lg" id="schedule-btn">Schedule for later</a>
+          </div>
+        </div>
+        <div class="hero-visual animate-on-scroll">
+          <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px">
+            <rect width="520" height="400" rx="12" fill="#f7f3ee"/>
+            <rect x="60" y="200" width="400" height="120" rx="8" fill="#e8e0d4"/>
+            <rect x="100" y="160" width="80" height="160" rx="4" fill="#d4c8b0"/>
+            <rect x="220" y="120" width="100" height="200" rx="4" fill="#c9b896"/>
+            <rect x="360" y="140" width="70" height="180" rx="4" fill="#d4c8b0"/>
+            <rect x="140" y="290" width="240" height="12" rx="6" fill="#4b4b4b"/>
+            <rect x="200" y="270" width="60" height="30" rx="4" fill="#000"/>
+            <circle cx="210" cy="300" r="8" fill="#333"/>
+            <circle cx="250" cy="300" r="8" fill="#333"/>
+            <circle cx="380" cy="100" r="30" fill="#f5a623" opacity="0.8"/>
+            <circle cx="120" cy="80" r="15" fill="#f5a623" opacity="0.4"/>
+            <path d="M80 320 Q260 280 440 320" stroke="#000" stroke-width="3" fill="none" stroke-dasharray="8 4"/>
+            <circle cx="80" cy="320" r="6" fill="#000"/>
+            <circle cx="440" cy="320" r="6" fill="#27ae60"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section" style="background:#fafafa">
+    <div class="container">
+      <div class="stats-grid stagger-children">
+        <div class="stat-item">
+          <h3><span class="stat-number" data-target="10000" data-suffix="+">0</span></h3>
+          <p>Cities worldwide</p>
+        </div>
+        <div class="stat-item">
+          <h3><span class="stat-number" data-target="130" data-suffix="M+">0</span></h3>
+          <p>Monthly active riders</p>
+        </div>
+        <div class="stat-item">
+          <h3><span class="stat-number" data-target="6" data-suffix="M+">0</span></h3>
+          <p>Active drivers</p>
+        </div>
+        <div class="stat-item">
+          <h3><span class="stat-number" data-target="42" data-suffix="B+">0</span></h3>
+          <p>Trips completed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drive with Uber -->
+  <section class="section" id="drive">
+    <div class="container">
+      <div class="feature-row animate-on-scroll">
+        <div class="feature-text">
+          <h2>Drive when you want, make what you need</h2>
+          <p>Make money on your schedule with deliveries or rides — or both. You can use your own car or choose a rental through Uber.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="#" class="btn btn-primary" id="start-driving-btn">Start driving</a>
+            <a href="#" class="btn btn-chip" id="learn-drive-btn">Learn more &#8594;</a>
+          </div>
+        </div>
+        <div class="feature-image">
+          <svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;border-radius:12px">
+            <rect width="480" height="340" rx="12" fill="#fef4e8"/>
+            <ellipse cx="240" cy="260" rx="180" ry="20" fill="#e8d8c0"/>
+            <rect x="130" y="180" width="220" height="80" rx="12" fill="#000"/>
+            <rect x="160" y="165" width="60" height="40" rx="6" fill="#b0d4f1"/>
+            <rect x="260" y="165" width="60" height="40" rx="6" fill="#b0d4f1"/>
+            <circle cx="170" cy="260" r="16" fill="#333"/><circle cx="170" cy="260" r="8" fill="#666"/>
+            <circle cx="310" cy="260" r="16" fill="#333"/><circle cx="310" cy="260" r="8" fill="#666"/>
+            <circle cx="300" cy="120" r="20" fill="#f5c49a"/>
+            <rect x="285" y="140" width="30" height="40" rx="4" fill="#4a90d9"/>
+            <rect x="288" cy="145" width="10" height="20" rx="2" fill="#f5c49a" transform="translate(-10,0)"/>
+            <path d="M310 155 L330 170" stroke="#f5c49a" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Uber Eats -->
+  <section class="section" style="background:#fafafa" id="eats">
+    <div class="container">
+      <div class="feature-row reverse animate-on-scroll">
+        <div class="feature-text">
+          <h2>Order food to your door with Uber Eats</h2>
+          <p>Get food from your favorite restaurants delivered fast. Browse local menus, track your order in real-time, and enjoy your meal.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="#" class="btn btn-primary" id="order-now-btn">Order now</a>
+            <a href="#" class="btn btn-chip" id="learn-eats-btn">Learn more &#8594;</a>
+          </div>
+        </div>
+        <div class="feature-image">
+          <svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;border-radius:12px">
+            <rect width="480" height="340" rx="12" fill="#fce8e6"/>
+            <rect x="140" y="100" width="200" height="160" rx="12" fill="#fff" stroke="#e0e0e0"/>
+            <circle cx="200" cy="160" r="30" fill="#f5a623"/>
+            <circle cx="280" cy="160" r="30" fill="#e74c3c"/>
+            <circle cx="240" cy="200" r="25" fill="#27ae60"/>
+            <rect x="180" y="230" width="120" height="8" rx="4" fill="#e0e0e0"/>
+            <rect x="340" y="230" width="60" height="30" rx="15" fill="#000"/>
+            <text x="355" y="250" fill="#fff" font-size="11" font-family="Inter,sans-serif" font-weight="500">Order</text>
+            <path d="M100 280 Q240 260 380 280" stroke="#ccc" stroke-width="2" fill="none" stroke-dasharray="6 3"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Section -->
+  <section class="section" id="business">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Uber for Business</h2>
+        <p>Solutions for companies of all sizes — from rides and meals to freight and delivery.</p>
+      </div>
+      <div class="grid-3 stagger-children">
+        <div class="card">
+          <div class="card-body">
+            <div class="icon">🚗</div>
+            <h4>Corporate travel</h4>
+            <p>Simplify business travel with a centralized dashboard and expensing tools.</p>
+            <a href="#" class="btn btn-primary btn-sm" id="travel-cta">Learn more</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="icon">🍽️</div>
+            <h4>Meal programs</h4>
+            <p>Keep your team fueled with Uber Eats meal credits and group ordering.</p>
+            <a href="#" class="btn btn-primary btn-sm" id="meals-cta">Learn more</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="icon">📦</div>
+            <h4>Delivery & freight</h4>
+            <p>Move goods across town or across the country with Uber's logistics network.</p>
+            <a href="#" class="btn btn-primary btn-sm" id="freight-cta">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="cta-banner animate-on-scroll">
+        <h2>There's more to love in the apps</h2>
+        <p>Download the Uber app for the full experience — from rides and food to bikes and scooters.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="#" class="btn btn-secondary btn-lg" id="download-ios">Download for iOS</a>
+          <a href="#" class="btn btn-secondary btn-lg" id="download-android">Download for Android</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="#">Our offerings</a></li>
+            <li><a href="#">Newsroom</a></li>
+            <li><a href="#">Investors</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Products</h5>
+          <ul>
+            <li><a href="#">Ride</a></li>
+            <li><a href="#">Drive</a></li>
+            <li><a href="#">Deliver</a></li>
+            <li><a href="#">Uber Eats</a></li>
+            <li><a href="#">Uber Business</a></li>
+            <li><a href="#">Uber Freight</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Global citizenship</h5>
+          <ul>
+            <li><a href="#">Safety</a></li>
+            <li><a href="#">Diversity</a></li>
+            <li><a href="#">Sustainability</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Travel</h5>
+          <ul>
+            <li><a href="#">Reserve</a></li>
+            <li><a href="#">Airports</a></li>
+            <li><a href="#">Cities</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Uber Technologies Inc.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
