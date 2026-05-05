@@ -15,11 +15,31 @@ const popularCities = [
 
 /* ── Category → Nominatim search keywords ── */
 const categories = [
-  { label: "Attractions", query: "tourism", icon: "🏛️" },
-  { label: "Transport", query: "aerodrome OR station", icon: "✈️" },
-  { label: "Hotels", query: "hotel", icon: "🏨" },
-  { label: "Entertainment", query: "stadium OR theatre OR cinema", icon: "🎭" },
-  { label: "Restaurants", query: "restaurant", icon: "🍽️" },
+  {
+    label: "Attractions",
+    icon: "🏛️",
+    overpass: `node["tourism"~"attraction|museum|artwork|viewpoint|gallery"](around:8000,LAT,LON);node["historic"](around:8000,LAT,LON);`,
+  },
+  {
+    label: "Transport",
+    icon: "✈️",
+    overpass: `node["aeroway"="aerodrome"](around:40000,LAT,LON);node["railway"="station"](around:10000,LAT,LON);node["amenity"="bus_station"](around:8000,LAT,LON);`,
+  },
+  {
+    label: "Hotels",
+    icon: "🏨",
+    overpass: `node["tourism"~"hotel|hostel|motel|guest_house"](around:6000,LAT,LON);way["tourism"~"hotel|hostel"](around:6000,LAT,LON);`,
+  },
+  {
+    label: "Entertainment",
+    icon: "🎭",
+    overpass: `node["leisure"~"stadium|sports_centre"](around:10000,LAT,LON);node["amenity"~"theatre|cinema|nightclub"](around:8000,LAT,LON);`,
+  },
+  {
+    label: "Restaurants",
+    icon: "🍽️",
+    overpass: `node["amenity"~"restaurant|cafe|fast_food|bar"](around:5000,LAT,LON);`,
+  },
 ];
 
 const categoryIcons = {
@@ -45,12 +65,12 @@ async function searchCities(query) {
   if (!query || query.length < 2) return [];
   try {
     const res = await fetch(
-      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&addressdetails=1&limit=6&featuretype=city&accept-language=en`,
+      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&addressdetails=1&limit=8&accept-language=en`,
       { headers: { "User-Agent": "UberCloneDemo/1.0" } }
     );
     const data = await res.json();
     return data
-      .filter((d) => d.type === "city" || d.type === "administrative" || d.type === "town" || d.class === "place")
+      .filter((d) => ["city", "administrative", "town", "village", "hamlet"].includes(d.type) || d.class === "place" || d.class === "boundary")
       .slice(0, 6)
       .map((d) => ({
         name: d.address?.city || d.address?.town || d.address?.village || d.name,
@@ -65,18 +85,35 @@ async function searchCities(query) {
   }
 }
 
-/* ── Nominatim: search places in city ── */
-async function searchPlaces(lat, lon, categoryQuery, cityName) {
+/* ── Overpass API: search places by OSM tags ── */
+async function searchPlaces(lat, lon, overpassTemplate) {
   try {
-    const res = await fetch(
-      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(categoryQuery + " in " + cityName)}&format=json&limit=12&accept-language=en&viewbox=${lon - 0.15},${lat + 0.15},${lon + 0.15},${lat - 0.15}&bounded=1`,
-      { headers: { "User-Agent": "UberCloneDemo/1.0" } }
-    );
+    const overpassQuery = overpassTemplate
+      .replace(/LAT/g, lat.toFixed(6))
+      .replace(/LON/g, lon.toFixed(6));
+
+    const query = `[out:json][timeout:10];(${overpassQuery});out center 12;`;
+
+    const res = await fetch("https://overpass-api.de/api/interpreter", {
+      method: "POST",
+      body: `data=${encodeURIComponent(query)}`,
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    });
+
     const data = await res.json();
-    return data.slice(0, 6).map((d) => ({
-      name: d.name || d.display_name.split(",")[0],
-      fullAddress: d.display_name,
-    }));
+    const seen = new Set();
+    return data.elements
+      .filter((el) => {
+        const name = el.tags?.name;
+        if (!name || seen.has(name)) return false;
+        seen.add(name);
+        return true;
+      })
+      .slice(0, 9)
+      .map((el) => ({
+        name: el.tags.name,
+        type: el.tags.tourism || el.tags.amenity || el.tags.aeroway || el.tags.railway || el.tags.leisure || el.tags.historic || "",
+      }));
   } catch {
     return [];
   }
@@ -116,7 +153,7 @@ export default function ExploreSection() {
   const fetchPlaces = useCallback(async () => {
     setLoading(true);
     const cat = categories[activeCategory];
-    const results = await searchPlaces(activeCity.lat, activeCity.lon, cat.query, activeCity.name);
+    const results = await searchPlaces(activeCity.lat, activeCity.lon, cat.overpass);
     setPlaces(results);
     setLoading(false);
   }, [activeCity, activeCategory]);
