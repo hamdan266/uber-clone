@@ -2,9 +2,9 @@ import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 const cards = [
-  { icon: "🚗", title: "Corporate travel", desc: "Simplify business travel with a centralized dashboard and expensing tools.", id: "travel-cta" },
-  { icon: "🍽️", title: "Meal programs", desc: "Keep your team fueled with Uber Eats meal credits and group ordering.", id: "meals-cta" },
-  { icon: "📦", title: "Delivery & freight", desc: "Move goods across town or across the country with Uber's logistics network.", id: "freight-cta" },
+  { icon: "🚗", title: "Corporate travel", desc: "Simplify business travel with a centralized dashboard and expensing tools.", id: "travel-cta", href: "/business/corporate-travel" },
+  { icon: "🍽️", title: "Meal programs", desc: "Keep your team fueled with Uber Eats meal credits and group ordering.", id: "meals-cta", href: "/business/meals" },
+  { icon: "📦", title: "Delivery & freight", desc: "Move goods across town or across the country with Uber's logistics network.", id: "freight-cta", href: "/business/freight" },
 ];
 
 export default function BusinessSection() {
@@ -22,7 +22,7 @@ export default function BusinessSection() {
                 <div className="icon">{c.icon}</div>
                 <h4>{c.title}</h4>
                 <p>{c.desc}</p>
-                <Link href="#" className="btn btn-primary btn-sm" id={c.id}>
+                <Link href={c.href} className="btn btn-primary btn-sm" id={c.id}>
                   Learn more
                 </Link>
               </div>
