@@ -254,7 +254,6 @@ export default function ExploreSection() {
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
           <span style={{ fontSize: "1.25rem" }}>{activeCity.flag}</span>
           <span style={{ fontWeight: 700, fontSize: "1.125rem" }}>{activeCity.name}</span>
-          <span style={{ color: "#888", fontSize: "0.875rem" }}>{activeCity.country}</span>
         </div>
 
         {/* Popular city pills */}

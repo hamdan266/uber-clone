@@ -13,10 +13,10 @@ export default function EatsSection() {
               menus, track your order in real-time, and enjoy your meal.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link href="#" className="btn btn-primary" id="order-now-btn">
+              <Link href="/eats" className="btn btn-primary" id="order-now-btn">
                 Order now
               </Link>
-              <Link href="#" className="btn btn-chip" id="learn-eats-btn">
+              <Link href="/eats" className="btn btn-chip" id="learn-eats-btn">
                 Learn more →
               </Link>
             </div>
