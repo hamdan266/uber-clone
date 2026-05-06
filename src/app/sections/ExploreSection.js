@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import LiveMap from "@/components/LiveMap";
 
 /* ── Popular cities (instant, no API call) ── */
 const popularCities = [
@@ -290,8 +291,12 @@ export default function ExploreSection() {
           ))}
         </div>
 
-        {/* Places grid */}
-        <div key={`${activeCity.name}-${activeCategory}`} style={{ animation: "blurIn 0.4s ease both", minHeight: 200 }}>
+        {/* Map + Places grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 24, alignItems: "start" }}>
+          <div key={`map-${activeCity.name}`} style={{ animation: "blurIn 0.5s ease both" }}>
+            <LiveMap lat={activeCity.lat} lon={activeCity.lon} zoom={13} height="360px" />
+          </div>
+          <div key={`${activeCity.name}-${activeCategory}`} style={{ animation: "blurIn 0.4s ease both", minHeight: 200 }}>
           {loading ? (
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 48, gap: 12 }}>
               <div style={{
@@ -344,10 +349,16 @@ export default function ExploreSection() {
             </div>
           )}
         </div>
+        </div>
       </div>
 
       <style jsx>{`
         @keyframes spin { to { transform: rotate(360deg); } }
+        @media (max-width: 768px) {
+          div[style*="grid-template-columns: 1fr 1fr"] {
+            grid-template-columns: 1fr !important;
+          }
+        }
       `}</style>
     </section>
   );

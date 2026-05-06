@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import LiveMap from "@/components/LiveMap";
 
 export default function EatsSection() {
   return (
@@ -21,16 +22,31 @@ export default function EatsSection() {
               </Link>
             </div>
           </div>
-          <div className="feature-image">
-            <svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", borderRadius: 12 }}>
-              <rect width="480" height="340" rx="12" fill="#fce8e6" />
-              <rect x="140" y="100" width="200" height="160" rx="12" fill="#fff" stroke="#e0e0e0" />
-              <circle cx="200" cy="160" r="30" fill="#f5a623" />
-              <circle cx="280" cy="160" r="30" fill="#e74c3c" />
-              <circle cx="240" cy="200" r="25" fill="#27ae60" />
-              <rect x="180" y="230" width="120" height="8" rx="4" fill="#e0e0e0" />
-              <rect x="340" y="230" width="60" height="30" rx="15" fill="#000" />
-              <text x="355" y="250" fill="#fff" fontSize="11" fontFamily="Inter,sans-serif" fontWeight="500">Order</text>
+          <div className="feature-image" style={{ position: "relative" }}>
+            <LiveMap lat={40.758} lon={-73.9855} zoom={14} height="320px" />
+            {/* Floating food pins overlay */}
+            <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" style={{
+              position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none",
+            }}>
+              <g><animateTransform attributeName="transform" type="translate" values="0,0;0,-6;0,0" dur="2.5s" repeatCount="indefinite" />
+                <circle cx="120" cy="100" r="20" fill="#fff" stroke="#e0e0e0" /><text x="112" y="108" fontSize="18">🍕</text>
+              </g>
+              <g><animateTransform attributeName="transform" type="translate" values="0,0;0,5;0,0" dur="3s" repeatCount="indefinite" />
+                <circle cx="320" cy="80" r="20" fill="#fff" stroke="#e0e0e0" /><text x="312" y="88" fontSize="18">🍔</text>
+              </g>
+              <g><animateTransform attributeName="transform" type="translate" values="0,0;0,-4;0,0" dur="2s" repeatCount="indefinite" />
+                <circle cx="380" cy="200" r="20" fill="#fff" stroke="#e0e0e0" /><text x="372" y="208" fontSize="18">🍣</text>
+              </g>
+              <g><animateTransform attributeName="transform" type="translate" values="0,0;0,6;0,0" dur="3.2s" repeatCount="indefinite" />
+                <circle cx="80" cy="230" r="20" fill="#fff" stroke="#e0e0e0" /><text x="72" y="238" fontSize="18">🌮</text>
+              </g>
+              {/* Delivery route */}
+              <path d="M240 280 Q200 200 160 160" stroke="#27ae60" strokeWidth="3" fill="none" strokeDasharray="8 4">
+                <animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1.5s" repeatCount="indefinite" />
+              </path>
+              <circle cx="240" cy="280" r="8" fill="#27ae60">
+                <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" />
+              </circle>
             </svg>
           </div>
         </AnimateOnScroll>

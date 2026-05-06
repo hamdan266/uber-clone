@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import LiveMap from "@/components/LiveMap";
 
 export default function DriveSection() {
   return (
@@ -169,6 +170,9 @@ export default function DriveSection() {
                 <animate attributeName="r" values="2;3.5;5.5" dur="1s" repeatCount="indefinite" />
               </circle>
             </svg>
+            <div style={{ marginTop: 12 }}>
+              <LiveMap lat={37.7749} lon={-122.4194} zoom={13} height="180px" />
+            </div>
           </div>
         </AnimateOnScroll>
       </div>
